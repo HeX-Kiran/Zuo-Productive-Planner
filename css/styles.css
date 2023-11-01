@@ -1,0 +1,61 @@
+@import url(general.css);
+
+/* Styling for nav bar */
+/* ******************************************************************* */
+.main-nav{
+    padding: 2rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand{
+    display: flex;
+    align-items: center;
+    gap: 8rem;
+}
+
+/* Styling for Task Tab */
+.task-tab{
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.nav-links{
+    text-decoration: none;
+    color: var(--main-text-color);
+    font-size: 1.8rem;
+}
+
+.nav-links:visited,
+.nav-links:active{
+    color: var(--main-text-color);
+ 
+
+}
+
+.nav-links:focus,
+.nav-links:hover{
+    color: var(--main-text-color-hover);
+    
+
+}
+
+/* Styling for user details */
+.user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.profile-icon{
+    padding: 1.2rem 1.2rem;
+    border-radius: 50%;
+    background-color: var(--main-bg-color);
+}
+
+/* ******************************************************************* */
+
+
