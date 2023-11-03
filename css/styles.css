@@ -1,8 +1,6 @@
 @import url(general.css);
 
-.planner{
-    position: relative;
-}
+
 
 /* Styling for nav bar */
 /* ******************************************************************* */
@@ -11,6 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 }
 
 .brand{
@@ -67,6 +66,7 @@
 main{
     padding: 5rem 5rem;
     background-color: var(--main-bg-color);
+    height: 100vh;
    
 }
 
@@ -177,6 +177,9 @@ header{
     font-size: 1.8rem;
 } */
 
+/* **************************************************************************** */
+/* Styles for Modal Box */
+
 .modal-task{
     padding: 5rem;
     width: 100vw;
@@ -261,10 +264,12 @@ textarea{
     display: flex;
     align-items: center;
     gap: 2rem;
-    
+    font-weight: 500;
+    font-size: 1.8rem;
+   
 }
 
-.modal-task span .task-hour,.modal-task span .task-min{
+.modal-task span .task-hour,.modal-task span .task-min,.modal-task span .focus-time,.modal-task span .break-time{
     width: 100px;
 }
 
@@ -280,6 +285,7 @@ textarea{
     border: none;
     outline: none;
     border-radius: 10px;
+    font-size: 1.6rem;
 }
 
 .save:hover{
@@ -299,6 +305,214 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+/* *********************************************************** */
+
+/* Error popup styles */
+.error{
+    padding: 1rem 2rem;
+    background-color: orangered;
+    color: white;
+    font-weight: 500;
+    font-size: 1.4rem;
+    position: absolute;
+    top: 10%;
+    left :50%;
+    transform: translateX(-50%);
+    border-radius: 30px;
+}
+
+.focus-greater{
+    display: none;
+}
+
+.break-greater{
+    display: none;
+}
+
+/* ************************************************************************** */
+
+/* Styles for task page */
+
+.task-page{
+    height: 100vh;
+    width: 100vw;
+    
+    z-index: 20;
+    background-color: #333;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    flex-direction: column;
+    
+    gap: 4rem;
+    
+}
+
+/* styles for task page nav bar */
+
+.task-nav{
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #222;
+}
+
+.task-total-time{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.task-total-time .icon, .task-total-time p{
+    font-size: 2rem;
+    color: #fff;
+}
+
+.task-page-btns{
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.task-icon{
+    color: white;
+    font-size: 2.8rem;
+}
+
+.brand-name{
+    
+    font-size: 3.2rem;
+    color: white;
+    font-weight: 500;
+    
+}
+
+/* styles for task page heading and content */
+
+.task-page-title h1{
+    font-size: 3.6rem;
+    text-transform: uppercase;
+    padding: 1rem 4rem;
+    color: white;
+    
+    
+}
+
+.task-page-title p{
+    padding: 2rem 4rem;
+    font-size: 2rem;
+    color: white;
+    font-weight: 500;
+    
+    
+}
+
+/* Styles for timer and its content */
+
+.timer{
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.time{
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.461);
+    font-size: 3.2rem;
+    color: white;
+}
+
+.timer .dial{
+    color: white;
+}
+
+/* styles for phase and its respective contents */
+
+.phase{
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    font-size: 3.2rem;
+    color: #fff;
+    font-weight: 600;
+    animation: blink 2s linear infinite alternate;
+}
+
+.focus-phase{
+    display: none;
+}
+
+/* Styles for quotes */
+
+.quotes{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+    text-align: center;
+    font-size: 2.4rem;
+    color: #fff;
+    font-style: italic;
+}
+
+/* Style for completed button */
+
+.completed{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.complete:link,
+.complete:visited{
+    padding: 1.2rem 2.4rem;
+    
+    background-color: #37b24d;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.8rem;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.complete:hover,
+.complete:active{
+   background-color: rgba(92, 249, 95, 0.729)
+}
+
+
+
+
+/* Blinking animation effect */
+@keyframes blink {
+    0%{
+        font-size: 1.4rem;
+    }
+
+    25%{
+        font-size: 2rem;
+    }
+
+    50%{
+        font-size: 2.4rem;
+    }
+
+    75%{
+        font-size: 2.8rem;
+    }
+
+    100%{
+        font: 3.2rem;
+    }
+}
+
 
 
 

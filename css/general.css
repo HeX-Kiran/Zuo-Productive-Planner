@@ -1,5 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 
 :root{
     --main-bg-color :#F7F8F8;
@@ -21,6 +23,7 @@ html{
 body{
     overflow-y: hidden;
     font-family: 'Roboto', sans-serif;
+    position: relative;
 }
 
 .primary-heading{

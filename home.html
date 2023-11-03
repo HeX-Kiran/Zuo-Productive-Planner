@@ -134,14 +134,100 @@
                 <input type="text" placeholder="Task title">
                 <textarea name="" id="" placeholder="Task Description"></textarea>
                 <span>
-                    <span class="other-heading">Estimated Time :-</span> 
+                    <span class="other-heading">Estimated Time </span> 
                     <input type="number" class="task-hour" placeholder="Hour">
                     <p class="dial"> : </p>
                     <input type="number" class="task-min" placeholder="Min">
                 </span>
+
+                <!-- Work Interval -->
+                <span>
+                    <span>Focus Time </span> 
+                    
+                    <input type="number" class="focus-time" placeholder="Min">
+                </span>
+                
+                <!-- Break Interval -->
+                <span>
+                    <span class="other-heading">Break Duration</span> 
+                    
+                    <input type="number" class=" break-time" placeholder="Min">
+                </span>
                 <button class="save">Save</button>
             </div>
         </div>
+
+        <!-- Error Pop Up messages -->
+        <div class="errors">
+            <!-- Pop up when focus time is greater than estimated time -->
+            <div class="focus-greater error">
+                <p>Focus time should be at max 60% of Estimated time</p>
+            </div>
+            <!-- Pop up when break interval is greater than estimated time and greater than focus time -->
+            <div class="break-greater error">
+                <p>Break duration should be at max 20% of estimated time and less than focus time</p>
+            </div>
+        </div>
+
+        <!-- Modal Box for each task-->
+
+        <div class="task-page">
+            <nav class="task-nav">
+                <p class="brand-name">Z u ò</p>
+                <div class="task-total-time">
+                    <ion-icon name="time-outline" class="clock icon"></ion-icon>
+                    <p class="task-estimated-time">1 hr 10 min</p>
+                </div>
+                
+
+                <div class="task-page-btns">
+                    <ion-icon name="trash-outline" class="delete task-icon"></ion-icon>
+                    <ion-icon name="close-outline" class="close task-icon"></ion-icon>
+
+                </div>
+            </nav>
+            <!-- Task Title -->
+            <div class="task-page-title">
+                <h1>Task</h1>
+                <p>Update and verify authentication for login</p>
+            </div>
+
+            <!-- Task Desc -->
+            <div class="task-page-title task-page-description">
+                <h1>Task description</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem rerum recusandae possimus molestiae inventore blanditiis non fugiat explicabo eligendi porro, obcaecati ipsum fugit cum? Itaque, esse facere. Esse doloremque adipisci quaerat aut odio harum odit alias dicta magni in cumque eum, provident ipsam sint illo quas fugit unde, nostrum iure?</p>
+            </div>
+
+            <!-- Timer -->
+           <div class="timer">
+                <div class="hour time">00</div> 
+                <div class="dial">:</div>
+                <div class="min time">00</div>
+                <div class="dial">:</div> 
+                <div class="sec time ">00</div>
+           </div>
+
+           <!-- Task Phase -->
+           <div class="task-phase">
+                <p class="focus-phase phase">FOCUS TIME</p>
+                <p class="Break-phase phase">BREAK TIME</p>
+
+            </div>
+
+            <!-- Quote Section -->
+            <div class="quotes">
+                <p>“The greatest glory in living lies not in never falling, but in rising every time we fall.” —Nelson Mandela</p>
+            </div>
+
+            <!-- Completed Status -->
+            <div class="completed">
+                <a href="" class="complete">Complete</a>
+            </div>
+
+            
+        </div>
+
+        
 
     </section>
 
