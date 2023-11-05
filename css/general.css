@@ -21,7 +21,7 @@ html{
 }
 
 body{
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     font-family: 'Roboto', sans-serif;
     position: relative;
 }
