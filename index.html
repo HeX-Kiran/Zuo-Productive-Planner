@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/queries.css">
     <script defer src="javascript/script.js"></script>
+    <script defer src="javascript/addTask.js"></script>
 </head>
 <body>
     <!-- Main container -->
@@ -50,77 +51,6 @@
                     <p>Add Task</p>
                 </div>
 
-                <!-- Card-1 -->
-                <div class="card">
-                    <div class="task-header">
-                        <p>Task1</p>
-                        <span class="tag">Not started</span>
-                    </div>
-
-                    <div class="task-desc teritory-heading">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit earum sequi modi, sapiente, exercitationem hic velit eligendi iusto officiis quia excepturi mollitia recusandae molestias ipsa incidunt ducimus maiores voluptatum voluptate!1
-                    </div>
-
-                    <div class="time-required">
-                        <p>Estimated Time :- 10:00</p>
-                    </div>
-
-                    <!-- <div class="task-btns">
-                        <ion-icon name="pencil-outline" id="icon" class="edit-btn"></ion-icon>
-                        <ion-icon name="trash-outline" id="icon" class="delete-btn"></ion-icon>
-                    
-                    </div> -->
-                    
-
-                </div>
-
-                <!-- Card-2 -->
-                <div class="card">
-                    <div class="task-header">
-                        <p>Task1</p>
-                        <span class="tag">Not started</span>
-                    </div>
-
-                    <div class="task-desc teritory-heading">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit earum sequi modi, sapiente, exercitationem hic velit eligendi iusto officiis quia excepturi mollitia recusandae molestias ipsa incidunt ducimus maiores voluptatum voluptate!1
-                    </div>
-
-                    <div class="time-required">
-                        <p>Estimated Time :- 10:00</p>
-                    </div>
-
-                    <!-- <div class="task-btns">
-                        <ion-icon name="pencil-outline" id="icon" class="edit-btn"></ion-icon>
-                        <ion-icon name="trash-outline" id="icon" class="delete-btn"></ion-icon>
-                    
-                    </div> -->
-                    
-
-                </div>
-
-                <!--Card-3 -->
-                <div class="card">
-                    <div class="task-header">
-                        <p>Task1</p>
-                        <span class="tag">Not started</span>
-                    </div>
-
-                    <div class="task-desc teritory-heading">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit earum sequi modi, sapiente, exercitationem hic velit eligendi iusto officiis quia excepturi mollitia recusandae molestias ipsa incidunt ducimus maiores voluptatum voluptate!1
-                    </div>
-
-                    <div class="time-required">
-                        <p>Estimated Time :- 10:00</p>
-                    </div>
-
-                    <!-- <div class="task-btns">
-                        <ion-icon name="pencil-outline" id="icon" class="edit-btn"></ion-icon>
-                        <ion-icon name="trash-outline" id="icon" class="delete-btn"></ion-icon>
-                    
-                    </div> -->
-                    
-
-                </div>
             </div>
         </main>
 
@@ -131,8 +61,8 @@
                     <h1 class="secondary-heading">Add Task</h1>
                     <ion-icon name="close-outline" class="form-close"></ion-icon>
                 </div>
-                <input type="text" placeholder="Task title">
-                <textarea name="" id="" placeholder="Task Description"></textarea>
+                <input type="text" placeholder="Task title" class="task-title">
+                <textarea name="" id="" placeholder="Task Description" class="modal-task-desc"></textarea>
                 <span>
                     <span class="other-heading">Estimated Time </span> 
                     <input type="number" class="task-hour" placeholder="Hour">
@@ -163,9 +93,40 @@
             <div class="focus-greater error">
                 <p>Focus time should be at max 60% of Estimated time</p>
             </div>
+
             <!-- Pop up when break interval is greater than estimated time and greater than focus time -->
             <div class="break-greater error">
                 <p>Break duration should be at max 20% of estimated time and less than focus time</p>
+            </div>
+
+            <!-- Pop up when break interval is greater  than focus time -->
+            <div class="break-greater-focus error">
+                <p>Break duration should be at max 50% of focus time</p>
+            </div>
+
+            <!-- Pop up when task title is empty-->
+            <div class="empty-title error">
+                <p>Task title should not be empty</p>
+            </div>
+
+            <!-- Pop up when task desc is empty-->
+            <div class="empty-desc error">
+                <p>Task description should not be empty</p>
+            </div>
+
+            <!-- Pop up when estimated time is empty-->
+            <div class="empty-estimatedTime error">
+                <p>Estimated time should not be empty</p>
+            </div>
+
+            <!-- Pop up when focus time is empty-->
+            <div class="empty-focusTime error">
+                <p>Focus time should not be empty</p>
+            </div>
+
+            <!-- Pop up when break time is empty-->
+            <div class="empty-breakTime error">
+                <p>Break time should not be empty</p>
             </div>
         </div>
 
