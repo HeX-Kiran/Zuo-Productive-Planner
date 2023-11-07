@@ -1,15 +1,15 @@
 // This file add the functionality for pomodoro timers
 
 // sample task
-currTask = {
-    code : 10002320, // unique code
-    taskTitle : "task 1",
-    taskDesc : "Some task",
-    estimatedHr : 0,
-    estimatedMin : 2,
-    focusTime : 1,
-    breakTime :1
-}
+// currTask = {
+//     code : 10002320, // unique code
+//     taskTitle : "task 1",
+//     taskDesc : "Some task",
+//     estimatedHr : 0,
+//     estimatedMin : 2,
+//     focusTime : 1,
+//     breakTime :1
+// }
 
 let timer;
 
