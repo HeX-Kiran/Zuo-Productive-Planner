@@ -58,4 +58,3 @@ function closeTaskPage(){
 }
 
 
-openTaskPage();
