@@ -402,7 +402,8 @@ input[type=number] {
 .task-page-btns{
     display: flex;
     align-items: center;
-    gap: 5rem;
+    gap: 4rem;
+    cursor: pointer;
 }
 
 .task-icon{

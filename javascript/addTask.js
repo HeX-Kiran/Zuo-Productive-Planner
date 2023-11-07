@@ -2,8 +2,9 @@
 
 let addTask = document.querySelector(".add-task");
 let saveBtn = document.querySelector(".save");
+let formClose = document.querySelector(".form-close");
 
-console.log(addTask);
+
 
 // when add-task button is clicked
 addTask.addEventListener("click",(e)=>{
@@ -16,6 +17,20 @@ addTask.addEventListener("click",(e)=>{
 saveBtn.addEventListener("click",e=>{
     // When save button is click ,get all details from input field and verfiy it
     getInput();
+})
+
+// when modal box close button is clicked
+formClose.addEventListener("click",()=>{
+    // while closing all the input fields should be empty
+    document.querySelector(".task-title").value = "";
+    document.querySelector(".modal-task-desc").value = "";
+    document.querySelector(".task-hour").value = "";
+    document.querySelector(".task-min").value ="";
+    document.querySelector(".focus-time").value = "";
+    document.querySelector(".break-time").value = "";
+
+    // close modal box
+    closeModalBox();
 })
 
 
