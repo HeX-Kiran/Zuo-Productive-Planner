@@ -356,6 +356,25 @@ input[type=number] {
     display: none;
 }
 
+/* Success popup styles */
+.success{
+    padding: 1rem 2rem;
+    background-color: green;
+    color: white;
+    font-weight: 500;
+    font-size: 1.4rem;
+    position: absolute;
+    top: 20%;
+    left :50%;
+    transform: translateX(-50%);
+    border-radius: 30px;
+    z-index: 100;
+}
+
+.task-done{
+    display: none;
+}
+
 
 
 /* ************************************************************************** */
@@ -475,6 +494,14 @@ input[type=number] {
 }
 
 .focus-phase{
+    display: none;
+}
+
+.break-phase{
+    display: none;
+}
+
+.complete-phase{
     display: none;
 }
 

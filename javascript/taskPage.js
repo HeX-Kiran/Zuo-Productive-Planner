@@ -56,3 +56,6 @@ function openTaskPage(){
 function closeTaskPage(){
     document.querySelector(".task-page").style.display = "none";
 }
+
+
+openTaskPage();

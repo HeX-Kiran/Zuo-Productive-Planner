@@ -9,6 +9,7 @@
     <script defer src="javascript/script.js"></script>
     <script defer src="javascript/addTask.js"></script>
     <script defer src="javascript/taskPage.js"></script>
+    <script defer src="javascript/timerOperations.js"></script>
 </head>
 <body>
     <!-- Main container -->
@@ -131,6 +132,17 @@
             </div>
         </div>
 
+        <!-- Success Pop Up messages -->
+        <div class="successes">
+            <!-- Pop up when task completed successfully -->
+            <div class="task-done success">
+                <p>Task completed successfully. Auto closing in 4 sec</p>
+                
+            </div>
+
+           
+        </div>
+
         <!-- Modal Box for each task-->
 
         <div class="task-page">
@@ -172,8 +184,9 @@
            <!-- Task Phase -->
            <div class="task-phase">
                 <p class="focus-phase phase">FOCUS TIME</p>
-                <p class="Break-phase phase">BREAK TIME</p>
-
+                <p class="break-phase phase">BREAK TIME</p>
+                <p class="complete-phase phase">TASK COMPLETED</p>
+                
             </div> 
 
             <!-- Quote Section -->
