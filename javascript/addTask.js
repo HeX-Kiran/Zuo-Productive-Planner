@@ -15,19 +15,18 @@ addTask.addEventListener("click",(e)=>{
 
 // when modal Box is opened and save button is clicked
 saveBtn.addEventListener("click",e=>{
+
     // When save button is click ,get all details from input field and verfiy it
     getInput();
+
+    // after saving clear input fields
+    clearInputFields();
 })
 
 // when modal box close button is clicked
 formClose.addEventListener("click",()=>{
     // while closing all the input fields should be empty
-    document.querySelector(".task-title").value = "";
-    document.querySelector(".modal-task-desc").value = "";
-    document.querySelector(".task-hour").value = "";
-    document.querySelector(".task-min").value ="";
-    document.querySelector(".focus-time").value = "";
-    document.querySelector(".break-time").value = "";
+    clearInputFields();
 
     // close modal box
     closeModalBox();
@@ -172,7 +171,7 @@ function renderTask(obj){
         </div>
 
         <div class="time-required">
-            <p>Estimated Time :- ${obj.estimatedHr} Hr : ${obj.estimatedMin} Min</p>
+            <p>Estimated Time :- ${obj.estimatedHr}hr   ${obj.estimatedMin}min</p>
         </div>
     `
     parentDiv.appendChild(child);
@@ -189,3 +188,15 @@ function openModalBox(){
 function closeModalBox(){
     document.querySelector(".modal-task").style.display = "none";
 }   
+
+
+// function to clear input fields
+function clearInputFields(){
+    // while closing all the input fields should be empty
+    document.querySelector(".task-title").value = "";
+    document.querySelector(".modal-task-desc").value = "";
+    document.querySelector(".task-hour").value = "";
+    document.querySelector(".task-min").value ="";
+    document.querySelector(".focus-time").value = "";
+    document.querySelector(".break-time").value = "";
+}

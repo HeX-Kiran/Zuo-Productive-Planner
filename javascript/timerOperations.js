@@ -11,42 +11,26 @@
 //     breakTime :1
 // }
 
+
+
 let timer;
 
-let totalTime = (currTask.estimatedHr * 60) + currTask.estimatedMin + 1;
-let focusTime = currTask.focusTime +1;
-let breakTime = currTask.breakTime +1;
+
 
 let hour = document.querySelector(".hour");
 let min = document.querySelector(".min");
 let sec = document.querySelector(".sec");
 
-let startBtn  = document.querySelector(".started");
-let taskCompleteBtn = document.querySelector(".completed");
-
-startBtn.addEventListener("click",(e)=>{
-    e.preventDefault()
-    // run the timer
-    pomodoro();
-});
-
-taskCompleteBtn.addEventListener("click",(e)=>{
-    e.preventDefault()
-    
-    clearInterval(timer);
-    // print the success message
-    document.querySelector(".task-done").style.display = "block";
-    // show sucess pop up for 4 secs
-    setTimeout(()=>{document.querySelector(".task-done").style.display = "none";},4000)
-    // soon after 4 sec task page is closed
-    setTimeout(()=>closeTaskPage(),4001)
-})
 
 
 
 
 // Function to start the pomodoro timer
 function pomodoro(){
+
+    let totalTime = (currTask.estimatedHr * 60) + currTask.estimatedMin + 1;
+    let focusTime = currTask.focusTime +1;
+    let breakTime = currTask.breakTime +1;
     
     
     let initialHr = currTask.estimatedHr;
@@ -56,11 +40,12 @@ function pomodoro(){
 
    updateTimer(initialHr,initialMin,initialSec)
 
+   
     
     // initialise a set Interval to run the timer every sec
 
     timer = setInterval(()=>{
-        console.log(totalTime);
+        
         
         // In each sec decrement the sec count
         initialSec--;
@@ -70,30 +55,23 @@ function pomodoro(){
         if(initialSec < 0){
             
             totalTime--; 
-            console.log("reduce total time" + totalTime);
+            
         }
         
         //if total estimated time is zero then stop the timer and the task has been finished
         if(totalTime == 0){
-            console.log("entered");
-            clearInterval(timer)
             
-           
             displayBreakPhase(0);
             displayFocusPhase(0);
             displayCompletePhase(1);
 
-            // print the success message
-            document.querySelector(".task-done").style.display = "block";
-            // show success pop up for 4 secs
-            setTimeout(()=>{document.querySelector(".task-done").style.display = "none";},4000)
-            // soon after 4 sec task page is closed
-            setTimeout(()=>closeTaskPage(),4001)
+            onCompleteTask();
+            
         }
 
         else{
             // every sec update focus time
-            updateFocusTime(initialSec)
+            updateFocusTime(initialSec);
         
         
         
@@ -117,60 +95,83 @@ function pomodoro(){
         }  
         
     },1000)
-}
 
-//function to update focusTime
-function updateFocusTime(initialSec){
 
-    //  if focus time is greater than 0 then display focus time
-    if(focusTime >0){
-        console.log("focus time = " + focusTime);
-        // display focus time phase
-        displayFocusPhase(1);
-        displayBreakPhase(0);
 
-        //  if 1 min reached then reduce the focus count
-        if(initialSec < 0){
+    //function to update focusTime
+    function updateFocusTime(initialSec){
+
+        //  if focus time is greater than 0 then display focus time
+        if(focusTime >0){
+            
+            // display focus time phase
+            displayFocusPhase(1);
+            displayBreakPhase(0);
+
+            //  if 1 min reached then reduce the focus count
+            if(initialSec < 0){
+                focusTime--;
+
+                // when focus time is zero then break time quotes should be displayed
+                if(focusTime){
+                    // whenever a min is reached a new quotes is displayed
+                    document.querySelector(".quotes p").innerText = generateQuotes(focusQuotes);
+                }
+                else{
+                    
+                    document.querySelector(".quotes p").innerText = generateQuotes(breakQuotes);
+                }
+                
+            }
+
+            // if focus time is zero then make break time into original break time
+            if(focusTime <= 0) breakTime = currTask.breakTime;
+        }
+        else{
            
-            focusTime--;
+            
+            // if focusTime is <=0 then call breakTime
+            updateBreakTime(initialSec)
         }
-
-        // if focus time is zero then make break time into original break time
-        if(focusTime <= 0) breakTime = currTask.breakTime;
-    }
-    else{
-        console.log("Entering break time");
-        
-        // if focusTime is <=0 then call breakTime
-        updateBreakTime(initialSec)
-    }
     
-}
-
-//function to update breakTime
-function updateBreakTime(initialSec){
-    //  if break time is greater than 0 then display break time
-    if(breakTime > 0){
-       
-
-        // display break time
-        displayBreakPhase(1);
-        displayFocusPhase(0);
-
-        //  if a min have been encountered then reduce the break time by 1
-        if(initialSec <0){
-            breakTime--;
-        }
-
-        // if focus time is zero then make focus time into original focus time
-        if(breakTime <= 0) focusTime = currTask.focusTime;
     }
-    else{
+
+    //function to update breakTime
+    function updateBreakTime(initialSec){
+        //  if break time is greater than 0 then display break time
+        if(breakTime > 0){
         
-        // call update focus time function
-        updateFocusTime(initialSec);
+
+            // display break time
+            displayBreakPhase(1);
+            displayFocusPhase(0);
+
+            //  if a min have been encountered then reduce the break time by 1
+            if(initialSec <0){
+                breakTime--;
+
+                if(breakTime){
+                    // whenever a min is reached a new quotes is displayed
+                    document.querySelector(".quotes p").innerText = generateQuotes(breakQuotes);
+                }
+                else{
+                    
+                    document.querySelector(".quotes p").innerText = generateQuotes(focusQuotes);
+                }
+            }
+
+            // if focus time is zero then make focus time into original focus time
+            if(breakTime <= 0) focusTime = currTask.focusTime;
+        }
+        else{
+            
+            // call update focus time function
+            updateFocusTime(initialSec);
+        }
     }
 }
+
+
 
 // Function to update timer in UI
 function updateTimer(initialHr,initialMin,initialSec){
@@ -209,5 +210,29 @@ function displayBreakPhase(flag){
 function displayCompletePhase(flag){
     if(flag)document.querySelector(".complete-phase").style.display = "block";
     else document.querySelector(".complete-phase").style.display = "none";
+}
+
+// when a task is completed, clear timer,modifiy tag of the task,pop up success message and close the task page in 4 sec
+function onCompleteTask(){
+    clearInterval(timer);
+    // print the success message
+    document.querySelector(".task-done").style.display = "block";
+
+    // change the task tag to completed
+    currNode.querySelector(".tag").innerText = "Completed";
+    currNode.querySelector(".tag").style.backgroundColor = "green";
+    
+    // show sucess pop up for 4 secs
+    setTimeout(()=>{document.querySelector(".task-done").style.display = "none";},4000)
+    // soon after 4 sec task page is closed
+    setTimeout(()=>closeTaskPage(),4001)
+}
+
+function generateQuotes(arr){
+    let maxLength = arr.length;
+
+    let randomIndex = Math.floor((Math.random() * maxLength));
+    
+    return arr[randomIndex];
 }
 

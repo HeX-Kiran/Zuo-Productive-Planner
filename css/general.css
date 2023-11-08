@@ -24,6 +24,7 @@ body{
     /* overflow-y: hidden; */
     font-family: 'Roboto', sans-serif;
     position: relative;
+    background-color: var(--main-bg-color);
 }
 
 .primary-heading{

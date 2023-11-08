@@ -2,30 +2,43 @@
 
 let taskDiv = document.querySelector(".tasks");
 
+
+
+
 // currTask Obj
 let currTask ;
+let currNode;
+let currTaskIndex;
 
 taskDiv.addEventListener("click",e=>{
     // here event propagation happens and if the target element contains card class then open up the task page for that specific card
 
     if(e.target.classList.contains("card")){
         let card = e.target;
+        currNode = e.target;
 
         let uuid = card.getAttribute("code");
-        console.log(uuid);
+        
 
         // find the taskObj from the array that matches the code
-        newTasks.forEach(obj=>{
-            if(obj.code == uuid) currTask = obj;
+        newTasks.forEach((obj,index)=>{
+            if(obj.code == uuid){
+                currTask = obj;
+                currTaskIndex = index;
+                
+            } 
         })
 
-
-        // open task page
-        openTaskPage();
-
-        // currTask contains the selected obj
-        //update the info in the task page
-        updateTaskPage(currTask);
+        
+        // open task page if the task is not already completed
+        if(currNode.querySelector(".tag").innerText != "COMPLETED"){
+            
+            openTaskPage();
+            // currTask contains the selected obj
+            //update the info in the task page
+            updateTaskPage(currTask);
+        } 
+        
     }
 })
 
@@ -43,7 +56,7 @@ function updateTaskPage(currTask){
         estimatedTime.textContent = `${currTask.estimatedHr} hr  ${currTask.estimatedMin} min`;
     }
     else{
-        console.log("CurrTask is empty");
+        console.warn("CurrTask is empty");
     }
    
 
