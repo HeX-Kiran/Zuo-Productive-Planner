@@ -218,6 +218,19 @@ function onCompleteTask(){
     // print the success message
     document.querySelector(".task-done").style.display = "block";
 
+    // update the timer count as 0
+    document.querySelector(".hour").innerText = "00";
+    document.querySelector(".min").innerText = "00";
+    document.querySelector(".sec").innerText = "00";
+
+    //display no phases
+    displayBreakPhase(0);
+    displayCompletePhase(0);
+    displayFocusPhase(0);
+
+    //no quotes should be displayed
+    document.querySelector(".quotes p").innerText = "";
+
     // change the task tag to completed
     currNode.querySelector(".tag").innerText = "Completed";
     currNode.querySelector(".tag").style.backgroundColor = "green";

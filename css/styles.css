@@ -391,7 +391,7 @@ input[type=number] {
     top: 0;
     display: none;
     flex-direction: column;
-    
+    overflow: hidden;
     gap: 5rem;
     
 }

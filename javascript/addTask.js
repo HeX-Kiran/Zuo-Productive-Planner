@@ -145,10 +145,10 @@ function createTaskObject(taskTitle,taskDesc,estimatedHr,estimatedMin,focusTime,
     this.code = Date.now(); // unique code
     this.taskTitle = taskTitle;
     this.taskDesc = taskDesc;
-    this.estimatedHr = estimatedHr;
-    this.estimatedMin = estimatedMin;
-    this.focusTime = focusTime;
-    this.breakTime = breakTime;
+    this.estimatedHr = Math.floor(estimatedHr);
+    this.estimatedMin = Math.floor(estimatedMin);
+    this.focusTime = Math.floor(focusTime);
+    this.breakTime = Math.floor(breakTime);
 }
 
 // function to render task object in ui
