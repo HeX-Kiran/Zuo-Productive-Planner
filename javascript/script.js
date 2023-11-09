@@ -1,6 +1,8 @@
 // Initialise an array to hold the task objects
 let newTasks = [];
 
+
+
 let focusQuotes = [
     "“Simplicity is prerequisite for reliability.” — Edsger W. Dijkstra",
     "“So much complexity in software comes from trying to make one thing do two things.” — Ryan Singer",
@@ -37,3 +39,44 @@ let breakQuotes =[
     
 
 ];
+
+// render all the tasks in UI from local storage
+let arr = JSON.parse(localStorage.getItem("tasks"));
+if(arr)
+{
+    newTasks = arr;
+    arr.forEach(obj => {
+    renderTask(obj);
+    });
+}
+
+
+// function to render task object in ui
+function renderTask(obj){
+    let parentDiv = document.querySelector(".tasks");
+    
+    let child = document.createElement('div');
+    child.classList.add("card");
+    child.setAttribute("code",obj.code);
+
+    child.innerHTML = 
+    `
+        <div class="task-header">
+            <p>${obj.taskTitle}</p>
+            <span class="tag">${obj.taskStatus}</span>
+        </div>
+
+        <div class="task-desc teritory-heading">
+            ${obj.taskDesc}
+        </div>
+
+        <div class="time-required">
+            <p>Estimated Time :- ${obj.estimatedHr}hr   ${obj.estimatedMin}min</p>
+        </div>
+    `
+
+    if(obj.taskStatus == "COMPLETED"){
+        child.querySelector(".tag").style.backgroundColor = "green"
+    }
+    parentDiv.appendChild(child);
+}

@@ -234,6 +234,10 @@ function onCompleteTask(){
     // change the task tag to completed
     currNode.querySelector(".tag").innerText = "Completed";
     currNode.querySelector(".tag").style.backgroundColor = "green";
+
+    currTask.taskStatus = "COMPLETED";
+    // now update the changes in local storage
+    localStorage.setItem("tasks",JSON.stringify(newTasks));
     
     // show sucess pop up for 4 secs
     setTimeout(()=>{document.querySelector(".task-done").style.display = "none";},4000)

@@ -51,10 +51,11 @@ function getInput(){
         // if all cases are passed then create an task object
         let estimatedHour = estimatedHr == "" ? 0 : Number(estimatedHr);
         let estimatedMinute = estimatedMin == "" ? 0 : Number(estimatedMin);
-        const taskObj = new createTaskObject(taskTitle,taskDesc,estimatedHour,estimatedMinute,Number(focusTime),Number(breakTime));
+        const taskObj = new createTaskObject(taskTitle,taskDesc,estimatedHour,estimatedMinute,Number(focusTime),Number(breakTime),"Not Started");
 
         // add task object in array
         newTasks.push(taskObj);
+        localStorage.setItem("tasks",JSON.stringify(newTasks));
 
         // add newly created task object in ui
         renderTask(taskObj);
@@ -140,7 +141,7 @@ function inputVerifier(taskTitle,taskDesc,estimatedHr,estimatedMin,focusTime,bre
 }
 
 // Function to create task object
-function createTaskObject(taskTitle,taskDesc,estimatedHr,estimatedMin,focusTime,breakTime){
+function createTaskObject(taskTitle,taskDesc,estimatedHr,estimatedMin,focusTime,breakTime,taskStatus){
     
     this.code = Date.now(); // unique code
     this.taskTitle = taskTitle;
@@ -149,32 +150,7 @@ function createTaskObject(taskTitle,taskDesc,estimatedHr,estimatedMin,focusTime,
     this.estimatedMin = Math.floor(estimatedMin);
     this.focusTime = Math.floor(focusTime);
     this.breakTime = Math.floor(breakTime);
-}
-
-// function to render task object in ui
-function renderTask(obj){
-    let parentDiv = document.querySelector(".tasks");
-    
-    let child = document.createElement('div');
-    child.classList.add("card");
-    child.setAttribute("code",obj.code);
-
-    child.innerHTML = 
-    `
-        <div class="task-header">
-            <p>${obj.taskTitle}</p>
-            <span class="tag">Not started</span>
-        </div>
-
-        <div class="task-desc teritory-heading">
-            ${obj.taskDesc}
-        </div>
-
-        <div class="time-required">
-            <p>Estimated Time :- ${obj.estimatedHr}hr   ${obj.estimatedMin}min</p>
-        </div>
-    `
-    parentDiv.appendChild(child);
+    this.taskStatus = taskStatus;
 }
 
 

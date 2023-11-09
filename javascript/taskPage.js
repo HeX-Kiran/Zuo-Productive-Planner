@@ -19,6 +19,7 @@ taskDiv.addEventListener("click",e=>{
 
         let uuid = card.getAttribute("code");
         
+        console.log();
 
         // find the taskObj from the array that matches the code
         newTasks.forEach((obj,index)=>{
@@ -44,7 +45,7 @@ taskDiv.addEventListener("click",e=>{
 
 
 function updateTaskPage(currTask){
-    // console.log(currTask);
+    
     // if currTask is not empty then update the task page details
     if(currTask){
         let taskTitle = document.querySelector(".task-page-title p");

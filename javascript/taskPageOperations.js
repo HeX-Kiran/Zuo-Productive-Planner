@@ -26,6 +26,7 @@ deleteBtn.addEventListener("click",(e)=>{
     currNode.remove();
     // now delete the task Obj from array
     newTasks.splice(currTaskIndex,1);
+    localStorage.setItem("tasks",JSON.stringify(newTasks));
     closeTaskPage();
     
 })
