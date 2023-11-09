@@ -19,8 +19,7 @@ saveBtn.addEventListener("click",e=>{
     // When save button is click ,get all details from input field and verfiy it
     getInput();
 
-    // after saving clear input fields
-    clearInputFields();
+    
 })
 
 // when modal box close button is clicked
@@ -62,7 +61,14 @@ function getInput(){
 
         // close modal  box
         closeModalBox();
+
+        // after saving clear input fields
+        clearInputFields();
+
+        
     }
+
+   
     
 
     
